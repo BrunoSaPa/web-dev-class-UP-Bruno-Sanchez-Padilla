@@ -1,3 +1,28 @@
 body {
     margin: 0;
 }
+
+
+.yellow,
+.blue,
+.red {
+    position: absolute;
+    width: 33.33%;
+    height: 33.33%;
+}
+
+.yellow{
+    background: yellow;
+}
+
+.blue{
+    background: blue;
+    left: 33.33%;
+    top: 33.33%;
+}
+
+.red{
+    background: red;
+    left: 66.66%;
+    top: 66.66%;
+}
