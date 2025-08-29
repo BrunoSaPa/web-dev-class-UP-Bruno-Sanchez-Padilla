@@ -1,3 +1,26 @@
 body {
     margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-size: 0;
 }
+
+.first, .second, .third {
+    width: 33.33%;
+    height: 100%;
+    display: inline-block;
+}
+
+.first {
+    background: #002B7F;
+}
+
+.second {
+    background: #FCD116;
+}
+
+.third {
+    background: #CE1126;
+}
+
+/*I removed the <p> and the h1 elements from the divs so we can have the flag on the whole screen :)*/
