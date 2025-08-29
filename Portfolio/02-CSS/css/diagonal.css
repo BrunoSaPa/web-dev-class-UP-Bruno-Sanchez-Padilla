@@ -1,3 +1,31 @@
 body {
     margin: 0;
 }
+
+div{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+
+.first{
+    background: #8282efff;
+    border: 10px solid #000;
+    padding: 20px;
+    top: 0px;
+    left: 0px;
+}
+
+.second{
+    background: #2b2bffff;
+    border: 20px;
+    top: 260px;
+    left: 260px; 
+}
+
+.third{
+    background: #2d2dccff;
+    border: 10px;
+    top: 460px;
+    left: 460px;
+}
