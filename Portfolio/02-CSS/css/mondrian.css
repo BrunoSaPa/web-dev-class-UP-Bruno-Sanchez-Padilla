@@ -1,0 +1,158 @@
+body{
+    background: white;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas{
+    border: 30px solid black;
+    height: 520px;
+    width: 920px;
+    padding: 10px;
+}
+
+.innerCanvas{
+    border: 5px solid black;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    display: flex;
+}
+
+
+
+
+.lefthalf, .righthalf{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.rightBorder{
+    border-right: 10px solid black;
+}
+
+.leftBorder{
+    border-left: 10px solid black;
+}
+
+.bottomBorder{
+    border-bottom: 10px solid black;
+}
+
+.topBorder{
+    border-top: 10px solid black;
+}
+
+
+.topLeft, .bottomLeft{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.topLeft{
+    height: 70%;
+}
+
+.bottomLeft{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sixtyVertical{
+    width: 60%;
+}
+
+.twentyVertical{
+    width: 20%;
+}
+
+.fortyVertical{
+    width: 40%;
+}
+
+.container1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sixtyHorizontal{
+    height: 60%;
+}
+
+.fortyHorizontal{
+    height: 40%;
+}
+
+.twentyHorizontal{
+    height: 20%;
+}
+
+.eightyHorizontal{
+    height: 80%;
+}
+
+.seventyHorizontal{
+    height: 70%;
+}
+
+.thirtyHorizontal{
+    height: 30%;
+}
+
+.ninetyHorizontal{
+    height: 90%;
+}
+
+.tenHorizontal{
+    height: 10%;
+}
+
+
+.eightyfiveHorizontal{
+    height: 85%;
+}
+
+.fifteenHorizontal{
+    height: 15%;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.bottomRight{
+
+    display: flex;
+    flex-direction: row;
+    height: 30%;
+}
+
+
+
+
+.redSquare{
+    background: #b91e02;
+    height: 80%;
+}
+
+.blueSquare{
+    background: #194b90;
+}
+
+.yellowSquare{
+    background: #e5ba02;
+}
