@@ -24,7 +24,7 @@ Move the image around the screen using the controls. Make sure that it always st
 
 ---
 
-## Primes - 2 pts
+## Primes - 2 pts DONE
 
 Extract the prime factors of the number given and show them in the "pf" span.
 
@@ -38,7 +38,7 @@ Following are the steps to find all prime factors.
 
 ---
 
-## Next primes - 1 pt.
+## Next primes - 1 pt. DONE
 
 Get the next prime value after the number provided.
 
@@ -52,7 +52,7 @@ Transform the input received into its pig latin version. Fix or complete the cod
 
 ---
 
-## Sieve of Eratosthenes - 3 pts
+## Sieve of Eratosthenes - 3 pts DONE
 
 Get the value provided and then get all the prime numbers below that one.
 
