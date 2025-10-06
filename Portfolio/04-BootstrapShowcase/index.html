@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+    $('[data-toggle="popover"]').popover()
+    })
+    </script>    
+
+    <script>
+        $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#liveToastBtn').click(function() {
+                $('#liveToast').toast('show');
+            });
+        });
+    </script>
+<title>Bootstrap Showcase</title>
+</head>
+<body data-spy="scroll" data-target="#scrollSpy" data-offset="0">
+    <!--navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Bootstrap Showcase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Something</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Something 2</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div data-bs-spy="scroll" data-bs-target="#scrollSpy" data-bs-offset="0">
+    <!--Accordion-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="accordionSection">
+    <div class="accordion" id="accordionContainer">
+        <h1 class="text-center mt-3 mb-3">1- accordion</h1>
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Accordion Item #1
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionContainer">
+                <div class="card-body">
+                    content of accordion item #1
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Accordion Item #2
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionContainer">
+                <div class="card-body">
+                    content of accordion item #2
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    <!--Buttons-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="buttonSection">
+        <h1>2- buttons</h1>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-link">Link</button>
+    </div>
+    <!--Button groups-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="buttonGroupSection">
+        <h1>3- button groups</h1>
+        <div class="btn-group" role="group" aria-label="btn groups">
+            <button type="button" class="btn btn-secondary">Left</button>
+            <button type="button" class="btn btn-secondary">Middle</button>
+            <button type="button" class="btn btn-secondary">Right</button>
+        </div>
+    </div>
+    <!--card-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center d-flex align-items-center flex-column" id="cardSection">
+        <h1>4- card</h1>
+        <div class="card" style="width: 18rem;">
+            <img src="https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg" class="card-img-top" alt="placeholder image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">button</a>
+            </div>
+        </div>
+    </div>
+    <!--modal-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="modalSection">
+        <h1>5- modal</h1>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            this is the modal
+        </button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This is a modal example.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pop over-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="popoverSection">
+        <h1>6- popover</h1>
+        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="random stuff here">Click to toggle popover</button>
+    </div>
+    <!--progress-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="progressSection">
+        <h1>7- progress</h1>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 42%;" aria-valuemin="0" aria-valuemax="100">42%</div>
+        </div>
+    </div>
+    <!--spinner-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="spinnerSection">
+        <h1>8- spinner</h1>
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!--tooltips-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="tooltipSection">
+        <h1>9- tooltips</h1>
+        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+            Tooltip on top
+        </button>
+    </div>
+
+    <!--iconic link-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="iconicLinkSection">
+        <h1>10- iconic link</h1>
+        <a href="#" class="btn btn-primary">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+            </svg>
+
+            Home
+        </a>
+    </div>
+    <!--floating labels-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="floatingLabelSection">
+        <h1>11- floating labels</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="something1">
+            <label for="floatingInput"></label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput2" placeholder="something2">
+            <label for="floatingInput2"></label>
+        </div>
+    </div>
+    <!--borders and background-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="bordersAndBackgroundSection">
+        <h1>12- borders and background</h1>
+        <div class="p-3 mb-2 bg-primary text-white rounded">.bg-primary</div>
+        <div class="p-3 mb-2 bg-secondary text-white rounded">.bg-secondary</div>
+        <div class="p-3 mb-2 bg-success text-white rounded">.bg-success</div>
+        <div class="p-3 mb-2 bg-danger text-white rounded-pill">.bg-danger</div>
+        <div class="p-3 mb-2 bg-warning text-dark rounded">.bg-warning</div>
+        <div class="p-3 mb-2 bg-info text-white rounded">.bg-info</div>
+        <div class="p-3 mb-2 bg-light text-dark rounded-circle">.bg-light</div>
+        <div class="p-3 mb-2 bg-dark text-white rounded-circle">.bg-dark</div>
+        <div class="p-3 mb-2 bg-white text-dark rounded-pill">.bg-white</div>
+        <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
+    </div>
+
+    <!--drop down with icons-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="dropdownWithIconsSection">
+        <h1>13- drop down with icons</h1>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                    </svg>
+                    Home
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--loading buttons-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center" id="loadingButtonSection">
+        <h1>14- loading buttons</h1>
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
+    </div>
+    <!--toast-->
+    <hr>
+    <div class="container mt-3 mb-3 justify-content-center text-center">
+        <h1>15- toast</h1>
+        <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+        <div style="position: fixed; top: 20px; right: 20px; z-index: 1050;">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+                <div class="toast-header">
+                    <strong class="mr-auto">toastttt</strong>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    im a toast
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--sticky footer & scroll spy-->
+    <div class="container p-5 mt-5 mb-5 justify-content-center text-center">   
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container align-items-center" id="footerSection">
+            <span class="text-muted">Sticky footer & scroll spy example</span>
+            <nav id="scrollSpy" class="navbar navbar-light bg-light justify-content-center text-center mt-2">
+                <nav class="nav nav-pills justify-content-center">
+                    <a class="nav-link" href="#accordionSection">1</a>
+                    <a class="nav-link" href="#buttonSection">2</a>
+                    <a class="nav-link" href="#buttonGroupSection">3</a>
+                    <a class="nav-link" href="#cardSection">4</a>
+                    <a class="nav-link" href="#modalSection">5</a>
+                    <a class="nav-link" href="#popoverSection">6</a>
+                    <a class="nav-link" href="#progressSection">7</a>
+                    <a class="nav-link" href="#spinnerSection">8</a>
+                    <a class="nav-link" href="#tooltipSection">9</a>
+                    <a class="nav-link" href="#iconicLinkSection">10</a>
+                    <a class="nav-link" href="#floatingLabelSection">11</a>
+                    <a class="nav-link" href="#bordersAndBackgroundSection">12</a>
+                    <a class="nav-link" href="#dropdownWithIconsSection">13</a>
+                    <a class="nav-link" href="#loadingButtonSection">14</a>
+                </nav>
+            </nav>
+        </div>
+    </footer>
+    
+    </div>
+</body>
+</html>
