@@ -1,0 +1,29 @@
+{
+  "name": "07-basicnode",
+  "version": "1.0.0",
+  "description": "this is a simple demo of node usage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoSaPa/web-dev-class-UP-Bruno-Sanchez-Padilla.git"
+  },
+  "keywords": [
+    "demo",
+    "node",
+    "basic"
+  ],
+  "author": "BrunoSaPa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrunoSaPa/web-dev-class-UP-Bruno-Sanchez-Padilla/issues"
+  },
+  "homepage": "https://github.com/BrunoSaPa/web-dev-class-UP-Bruno-Sanchez-Padilla#readme",
+  "dependencies": {
+    "star-wars-quotes": "^1.0.2",
+    "superheroes": "^4.0.0",
+    "supervillains": "^4.0.0"
+  }
+}
