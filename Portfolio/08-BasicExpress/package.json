@@ -1,0 +1,15 @@
+{
+  "name": "08-basicexpress",
+  "version": "1.0.0",
+  "description": "basic express demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BrunoSaPa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {}
+}

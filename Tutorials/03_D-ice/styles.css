@@ -1,3 +1,9 @@
+body {
+  font-family: Arial;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
 .container {
   width: 70%;
   margin: auto;
@@ -13,6 +19,7 @@
 h1 {
   margin: 30px;
   font-size: 8rem;
+  font-family: lobster, cursive;
 }
 
 p {
@@ -21,4 +28,8 @@ p {
 
 img {
   width: 80%;
+}
+
+.dice p{
+  font-family: lobster, cursive;
 }
