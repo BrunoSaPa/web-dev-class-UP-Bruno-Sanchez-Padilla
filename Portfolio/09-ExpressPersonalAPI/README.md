@@ -1,3 +1,5 @@
+NOTE TO SELF, THIS IS DONE
+
 # Express API
 
 This project will help us to test the responses we can get out of our express server, including some error handling processes.

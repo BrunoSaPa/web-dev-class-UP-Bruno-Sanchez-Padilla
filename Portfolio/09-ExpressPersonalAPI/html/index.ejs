@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express test</title>
+</head>
+
+<body>
+    <% if (locals.error) { %>
+        <h3>
+            <%= error %>
+        </h3>
+        <% } %>
+            <form action="/greet" method="get">
+                Register:
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="submit" value="go next">
+            </form>
+            <div id="greetings">
+                <% if (names && names.length> 0) { %>
+                    <h3>Registered Names:</h3>
+                    <ul>
+                        <% names.forEach((name, index)=> { %>
+                            <li><a href="/greet/<%= index %>">hello: <%= name %></a></li>
+                            <% }); %>
+                    </ul>
+                    <% } %>
+            </div>
+
+            <h2>TODO List</h2>
+            <form action="/task" method="post">
+                <input type="text" name="task" id="task" placeholder="Enter a task" required>
+                <button type="submit" value="Add Task">Add Task</button>
+            </form>
+
+            <div id="tasks">
+                <% tasks.forEach((task, index)=> { %>
+                    <div class="task-item">
+                        <span>
+                            <%= task %>
+                        </span>
+
+                        <% if (index> 0) { %>
+                            <form action="/task/move/<%= index %>/up" method="post" >
+                                <button type="submit">up</button>
+                            </form>
+                            <% } %>
+
+                                <% if (index < tasks.length - 1) { %>
+                                    <form action="/task/move/<%= index %>/down" method="post">
+                                        <button type="submit">down</button>
+                                    </form>
+                                    <% } %>
+
+                                        <form action="/task/<%= index %>" method="post">
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                        <hr>
+                    </div>
+                    <% }); %>
+            </div>
+</body>
+
+</html>
