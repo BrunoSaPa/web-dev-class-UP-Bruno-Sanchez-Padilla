@@ -1,3 +1,5 @@
+NOTE TO SELF, THIS IS DONE
+
 # Basic Node
 
 These exercises will guide us on how to create a simple Node script and how to execute it, as well as understanding how to get to use libraries inside of Node.

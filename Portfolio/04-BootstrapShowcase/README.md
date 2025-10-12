@@ -1,3 +1,6 @@
+NOTE TO SELF, THIS IS DONE
+
+
 # Bootstrap Exercises
 
 Bootstrap is a very dynamic and responsive library.

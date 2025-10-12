@@ -1,3 +1,152 @@
 body {
-  margin: 0;
+    background-color: #C0BCB5;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    margin: 0;
+}
+h1 {
+    font-family: 'Sacramento', cursive;
+    color: #C03221;
+    font-size: 5.5rem;
+    margin: 50px;
+}
+
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    padding-bottom: 10px;
+    color:#084887;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #4B5043;
+}
+
+
+hr {
+    border: none;
+    border-top: 6px dotted #E1BB80;
+    width: 4%;
+    margin: 10px auto;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2C5F72;
+}
+
+a:hover {
+    color: green;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+
+section img {
+    max-width: 400px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+ul, ol {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.section {
+    margin: 50px 0;
+    padding: 30px;
+}
+
+.section-alt {
+    background-color: #d9d7d3;
+}
+
+.heroes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.hero-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 250px;
+    text-align: center;
+}
+
+
+.hero-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+form {
+    border: 3px dotted #4A7C7A;
+    background-color: #F0F8FF;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 15px;
+}
+
+input, select, textarea {
+    border-radius: 10px;
+    background-color: #FAFBFC;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin: 5px;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4A7C7A;
+    color: white;
+}
+
+.mountain {
+    position: static;
+}
+
+.cloud {
+    position: sticky;
+    top: 20px;
+    width: 100px;
+    z-index: 1;
+}
+
+.cloud-left {
+    float: left;
+    margin-left: 20px;
+}
+
+.cloud-right {
+    float: right;
+    margin-right: 20px;
 }
