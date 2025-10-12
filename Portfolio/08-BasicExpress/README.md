@@ -1,3 +1,5 @@
+  NOTE TO SELF, THIS IS DONE
+
 # Basic Express
 
 This exercise should show how we can serve multiple static pages and basic interaction via form parameters

@@ -12,9 +12,12 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const weight = parseFloat(req.body.weight);
     const height = parseFloat(req.body.height);
-    const bmi = (weight / (height * height)) * 10000;
+    
+    const heightInMeters = height / 100;
+    const bmi = weight / (heightInMeters * heightInMeters);
+
     console.log(bmi);
-    res.render('index', { bmi: bmi });
+    res.send("Your BMI is " + bmi);
 });
 
 app.listen(port, () => {
