@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="post-detail">
+        <a href="/home" class="back-link">Back to Home</a>
+        
+        <form action="/post/<%= post.id %>/edit" method="post" class="edit-form">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="<%= post.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="10" required><%= post.content %></textarea>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+        
+        <form action="/post/<%= post.id %>/delete" method="post" class="delete-form">
+            <button type="submit" class="btn btn-danger">Delete Post</button>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

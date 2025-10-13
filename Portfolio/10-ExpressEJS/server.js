@@ -1,6 +1,14 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const https = require("https");
+const port = 3000;
+
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public/html');
+let nextId = 0;
+let currentUser = null;
 
 // TODO: configure the express server
 
@@ -9,9 +17,113 @@ const longContent =
 
 let posts = [];
 let name;
+let message = "";
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/html/index.html");
+
+  res.render("index" ,{message: message});
+});
+
+app.get('/login', (req, res) => {
+  
+    const name = req.query.name;
+    currentUser = name;
+    message = `Hello ${name}, you logged in via GET which is a secured method`;
+    res.redirect('/');});
+
+
+app.post('/login', (req, res) => {
+    const name = req.body.name;
+    currentUser = name;
+    message = `Hello ${name}, you logged in via POST which is a secured method`;
+    res.render("index" ,{message: message});
+});
+
+app.get('/test', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    res.render('test', { 
+        username: currentUser,
+    });
+});
+
+app.get('/home', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    res.render('home', { 
+        username: currentUser,
+        posts: posts
+    });
+});
+
+app.post('/post', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    
+    const { title, content } = req.body;
+    
+    if (title && content) {
+        posts.push({
+            id: nextId++,
+            title: title,
+            content: content
+        });
+    }
+    
+    res.redirect('/home');
+});
+
+app.get('/post/:id', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    
+    const postId = parseInt(req.params.id);
+    const post = posts.find(p => p.id === postId);
+    
+    if (!post) {
+        return res.redirect('/home');
+    }
+    
+    res.render('post', { 
+        username: currentUser,
+        post: post
+    });
+});
+
+app.post('/post/:id/edit', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    
+    const postId = parseInt(req.params.id);
+    const { title, content } = req.body;
+    const post = posts.find(p => p.id === postId);
+    
+    if (!post) {
+        return res.redirect('/home');
+    }
+
+    if (title && content) {
+        post.title = title;
+        post.content = content;
+    }
+    
+    res.redirect(`/post/${postId}`);
+});
+
+app.post('/post/:id/delete', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/');
+    }
+    
+    const postId = parseInt(req.params.id);
+    posts = posts.filter(p => p.id !== postId);
+    
+    res.redirect('/home');
 });
 
 app.listen(3000, (err) => {
