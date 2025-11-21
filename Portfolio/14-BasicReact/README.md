@@ -1,3 +1,5 @@
+NOTE TO SELF, THIS IS DONE
+
 # Basic React
 
 - Using the _data.js_ file provided in public, create an interface that displays a card-like array of the 6 movies listed in there. Use the poster of every entry for the card and put the name of the movie and the year in the description of the card.
