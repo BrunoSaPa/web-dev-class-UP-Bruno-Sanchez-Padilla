@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-export default function MovieCard({ movie, onSelect }) {
+export default function MovieCard({ movie, onSelect, isSelected }: { movie: any, onSelect: (movie: any) => void, isSelected?: boolean }) {
   const [hover, setHover] = useState(false);
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
@@ -20,9 +20,9 @@ export default function MovieCard({ movie, onSelect }) {
           width: '100%',
           minHeight: '450px',
           transition: 'all 0.3s ease-in-out', 
-          transform: hover ? 'translateY(-5px) scale(1.02)' : 'translateY(0) scale(1)',
-          boxShadow: hover ? `0 10px 25px ${affiliationColorMedium}, 0 0 0 2px ${affiliationColor}` : '0 5px 15px rgba(0,0,0,0.08)',
-          border: hover ? `2px solid ${affiliationColor}` : '2px solid transparent'
+          transform: hover || isSelected ? 'translateY(-5px) scale(1.02)' : 'translateY(0) scale(1)',
+          boxShadow: hover || isSelected ? `0 10px 25px ${affiliationColorMedium}, 0 0 0 2px ${affiliationColor}` : '0 5px 15px rgba(0,0,0,0.08)',
+          border: hover || isSelected ? `2px solid ${affiliationColor}` : '2px solid transparent'
         }}
         onMouseEnter={() => setHover(true)} 
         onMouseLeave={() => setHover(false)}
@@ -33,7 +33,9 @@ export default function MovieCard({ movie, onSelect }) {
           height: '250px', 
           borderTopLeftRadius: '0.75rem', 
           borderTopRightRadius: '0.75rem',
-          background: hover ? `linear-gradient(135deg, ${affiliationColorLight}, ${affiliationColorMedium})` : 'transparent'
+          background: hover ? `linear-gradient(135deg, ${affiliationColorLight}, ${affiliationColorMedium})` : 'transparent',
+          borderBottom: `4px solid ${hover ? affiliationColor : 'transparent'}`,
+          transition: 'all 0.3s ease-in-out'
         }} 
       >
         <img 
@@ -41,9 +43,9 @@ export default function MovieCard({ movie, onSelect }) {
             className="card-img-top w-100 h-100" 
             alt={movie.title} 
             style={{ 
-                objectFit: 'cover',
-                borderBottom: hover ? `4px solid ${affiliationColor}` : 'none',
-                transition: 'all 0.3s ease-in-out'
+                objectFit: hover ? 'contain' : 'cover',
+                padding: hover ? '20px' : '0',
+                transition: 'padding 0.3s ease-in-out'
             }}
         />
         {hover && (
@@ -72,8 +74,8 @@ export default function MovieCard({ movie, onSelect }) {
                   color: 'white',
                   transition: 'all 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = isGoodAffiliation ? '#1e4db8' : '#c73545'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = affiliationColor}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = isGoodAffiliation ? '#1e4db8' : '#c73545'}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = affiliationColor}
             >
                 More...
             </button>

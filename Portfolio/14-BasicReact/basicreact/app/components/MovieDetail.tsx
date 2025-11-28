@@ -1,16 +1,27 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Assuming you are using Bootstrap classes (like row, col-md, btn, etc.) 
 // which is implied by the original code.
 
-export default function MovieDetail({ movie }) {
-  const [comments, setComments] = useState([]);
+export default function MovieDetail({ movie }: { movie: any }) {
+  const [comments, setComments] = useState<{name: string, comment: string}[]>([]);
   const [form, setForm] = useState({ name: '', comment: '' });
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const storedComments = sessionStorage.getItem(`comments_${movie.episode}`);
+    if (storedComments) {
+      setComments(JSON.parse(storedComments));
+    } else {
+      setComments([]);
+    }
+  }, [movie]);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if(!form.name || !form.comment) return;
-    setComments([...comments, form]);
+    const newComments = [...comments, form];
+    setComments(newComments);
+    sessionStorage.setItem(`comments_${movie.episode}`, JSON.stringify(newComments));
     setForm({ name: '', comment: '' });
   };
 
@@ -71,7 +82,7 @@ export default function MovieDetail({ movie }) {
                     id="commentTextarea"
                     className="form-control" 
                     placeholder="Your Comment" 
-                    rows="3"
+                    rows={3}
                     value={form.comment} 
                     onChange={e => setForm({...form, comment: e.target.value})} 
                     required
