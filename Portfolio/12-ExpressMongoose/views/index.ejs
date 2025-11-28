@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mongo</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="/images/StarLion.png" alt="lion brewery" class="logo" />
+            <h1>Database for f1 drivers and their scrudiera</h1>
+        </header>
+        
+        <main>
+            <form action="/driver" method="post" class="driver-form">
+                <h2>Driver information</h2>
+                <div class="form-group">
+                    <input type="text" name="num" id="num" placeholder="Number" />
+                    <input type="text" name="code" id="code" placeholder="Code" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" id="name" placeholder="Name" />
+                    <input type="text" name="lname" id="lname" placeholder="Last name" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of birth: </label>
+                    <input type="date" name="dob" id="dob" />
+                </div>
+
+                <div class="form-group">
+                    <label for="url">Biography URL: </label>
+                    <input type="url" name="url" id="url" placeholder="https://..." />
+                </div>
+                
+                <div class="form-group">
+                    <label for="nation">Nationality: </label>
+                    <select name="nation" id="nation">
+                        <% countries.forEach(function(country) { %>
+                            <option value="<%= country.code %>"><%= country.label %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="team">Team: </label>
+                    <select name="team" id="team">
+                        <% teams.forEach(function(team) { %>
+                            <option value="<%= team.code %>"><%= team.label %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Save Driver" class="btn-submit" />
+                </div>
+            </form>
+
+            <div class="view-toggle">
+                <a href="/?view=drivers" class="btn-toggle <%= view === 'drivers' ? 'active' : '' %>">Drivers</a>
+                <a href="/?view=teams" class="btn-toggle <%= view === 'teams' ? 'active' : '' %>">Teams</a>
+            </div>
+
+            <section class="list-section">
+                <% if (view === 'drivers') { %>
+                    <h2>Drivers List</h2>
+                    <% if (drivers && drivers.length > 0) { %>
+                        <table class="table" id="driversTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Code</th>
+                                    <th>Name</th>
+                                    <th>Nationality</th>
+                                    <th>Team</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% drivers.forEach(function(driver) { %>
+                                    <tr data-id="<%= driver._id %>">
+                                        <td data-field="num"><%= driver.num %></td>
+                                        <td data-field="code"><%= driver.code %></td>
+                                        <td data-field="name"><%= driver.forename %> <%= driver.surname %></td>
+                                        <td data-field="nationality"><%= driver.nationality %></td>
+                                        <td data-field="team"><%= driver.team ? driver.team.name : 'N/A' %></td>
+                                        <td>
+                                            <button class="btn-edit" onclick="toggleEdit(this, 'driver')">Edit</button>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p>No drivers found.</p>
+                    <% } %>
+                <% } else { %>
+                    <h2>Teams List</h2>
+                    <% if (dbTeams && dbTeams.length > 0) { %>
+                        <table class="table" id="teamsTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Nationality</th>
+                                    <th>URL</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% dbTeams.forEach(function(team) { %>
+                                    <tr data-id="<%= team._id %>">
+                                        <td data-field="name"><%= team.name %></td>
+                                        <td data-field="nationality"><%= team.nationality || 'Unknown' %></td>
+                                        <td data-field="url"><%= team.url || '' %></td>
+                                        <td>
+                                            <button class="btn-edit" onclick="toggleEdit(this, 'team')">Edit</button>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p>No teams found.</p>
+                    <% } %>
+                <% } %>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const availableTeams = <%- JSON.stringify(teams) %>;
+
+        function toggleEdit(btn, type) {
+            const row = btn.closest('tr');
+            const isEditing = row.classList.contains('editing');
+
+            if (isEditing) {
+                saveRow(row, type, btn);
+            } else {
+                enterEditMode(row, type, btn);
+            }
+        }
+
+        function enterEditMode(row, type, btn) {
+            row.classList.add('editing');
+            btn.textContent = 'Save';
+            
+            const cells = row.querySelectorAll('td[data-field]');
+            cells.forEach(cell => {
+                const field = cell.dataset.field;
+                const value = cell.innerText;
+                
+                if (field === 'name' && type === 'driver') {
+                    // Split name for driver
+                    const parts = value.split(' ');
+                    const surname = parts.pop();
+                    const forename = parts.join(' ');
+                    cell.innerHTML = `
+                        <input type="text" name="forename" value="${forename}" class="edit-input" placeholder="Forename">
+                        <input type="text" name="surname" value="${surname}" class="edit-input" placeholder="Surname">
+                    `;
+                } else if (field === 'team' && type === 'driver') {
+                    let selectHtml = `<select name="team" class="edit-input">`;
+                    availableTeams.forEach(t => {
+                        const selected = t.label === value ? 'selected' : '';
+                        selectHtml += `<option value="${t.code}" ${selected}>${t.label}</option>`;
+                    });
+                    selectHtml += `</select>`;
+                    cell.innerHTML = selectHtml;
+                } else {
+                    cell.innerHTML = `<input type="text" name="${field}" value="${value}" class="edit-input">`;
+                }
+            });
+        }
+
+        async function saveRow(row, type, btn) {
+            const id = row.dataset.id;
+            const inputs = row.querySelectorAll('input, select');
+            const data = { id };
+            
+            inputs.forEach(input => {
+                data[input.name] = input.value;
+            });
+
+            try {
+                const response = await fetch(`/${type}/update`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    // Update UI with new values
+                    row.classList.remove('editing');
+                    btn.textContent = 'Edit';
+                    
+                    const cells = row.querySelectorAll('td[data-field]');
+                    cells.forEach(cell => {
+                        const field = cell.dataset.field;
+                        if (field === 'name' && type === 'driver') {
+                            cell.textContent = `${data.forename} ${data.surname}`;
+                        } else {
+                            cell.textContent = data[field];
+                        }
+                    });
+                } else {
+                    alert('Error saving: ' + result.error);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error saving data');
+            }
+        }
+    </script>
+</body>
+
+</html>
